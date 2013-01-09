@@ -27,9 +27,11 @@ Loosely based off of https://github.com/jaz303/jquery-grab-bag/blob/master/javas
 
 ## API
 
-### `grow(el)`
+### `grow(el, options)`
 
-Initializes a growing textarea
+Initializes a growing textarea. Options include
+
+* `buffer`: sets the amount of buffer space added to the end. Defaults to 20px.
 
 ## TODO
 

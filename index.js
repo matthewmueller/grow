@@ -10,7 +10,7 @@ var $ = require('jquery'),
  * Attributes that affect size
  */
 
-var attrs = ['width', 'font-size', 'font-family', 'font-weight', 'line-height'];
+var attrs = ['width', 'font-size', 'font-family', 'font-weight', 'line-height', 'padding'];
 
 /**
  * Boilerplate text
@@ -31,19 +31,17 @@ module.exports = Grow;
  * @param {Object} options
  */
 
-function Grow(el) {
+function Grow(el, options) {
   if(!(this instanceof Grow)) return new Grow(el, options);
   this.el = el;
+  this.options = options || {};
   this.$el = $(el);
   this.shadow = domify(require('./template'))[0];
   this.$shadow = $(this.shadow);
 
   // initial attributes
-  this.height = this.$el.height();
-
-  // buffer
-  var lineheight = this.$el.css('line-height');
-  this.buffer = (lineheight != 'normal') ? lineheight : (this.options.buffer || 20);
+  this.height = this.$el.outerHeight();
+  this.buffer = this.options.buffer || 20;
 
   // copy attributes
   for (var i = 0, len = attrs.length; i < len; i++) {
@@ -63,16 +61,16 @@ function Grow(el) {
  * @api private
  */
 
-Grow.prototype.update = function(e) {
+Grow.prototype.update = function() {
   var val = entities(this.el.value),
       $shadow = this.$shadow,
       $el = this.$el;
 
   // Copy text over
-  if(e && val) this.shadow.innerHTML = val;
+  if(val) this.shadow.innerHTML = val;
   else this.shadow.innerHTML = boilerplate;
 
-  var height = Math.max($shadow.height() + this.buffer, this.height);
+  var height = Math.max($shadow.outerHeight() + this.buffer, this.height);
   $el.height(height);
 
   return this;
