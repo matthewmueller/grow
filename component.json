@@ -1,0 +1,21 @@
+{
+  "name": "grow",
+  "repo": "matthewmueller/grow",
+  "description": "grow textareas",
+  "version": "0.0.1",
+  "keywords": [],
+  "dependencies": {
+    "component/domify" : "*",
+    "component/event" : "*",
+    "component/jquery" : "*"
+  },
+  "development": {},
+  "license": "MIT",
+  "scripts": [
+    "index.js",
+    "template.js"
+  ],
+  "styles": [
+    "grow.css"
+  ]
+}
