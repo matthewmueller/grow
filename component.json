@@ -2,7 +2,7 @@
   "name": "grow",
   "repo": "matthewmueller/grow",
   "description": "grow textareas",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "keywords": [],
   "dependencies": {
     "component/domify" : "*",
