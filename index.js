@@ -33,8 +33,8 @@ module.exports = Grow;
 
 function Grow(el, options) {
   if(!(this instanceof Grow)) return new Grow(el, options);
-  this.el = el;
   this.options = options || {};
+  this.el = el;
   this.$el = $(el);
   this.shadow = domify(require('./template'))[0];
   this.$shadow = $(this.shadow);
