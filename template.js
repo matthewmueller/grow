@@ -1,1 +1,1 @@
-module.exports = '<div id="grow-component"></div>\n';
+module.exports = '<div class="grow-component"></div>\n';
