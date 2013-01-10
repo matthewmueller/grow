@@ -3,7 +3,7 @@
   "repo": "matthewmueller/grow",
   "description": "grow textareas",
   "version": "0.0.3",
-  "keywords": [],
+  "keywords": ["textarea", "grow", "auto", "resize"],
   "dependencies": {
     "component/domify" : "*",
     "component/event" : "*",
