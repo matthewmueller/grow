@@ -7,10 +7,10 @@ var $ = require('jquery'),
     domify = require('domify');
 
 /**
- * Attributes that affect size
+ * Attributes that affect height
  */
 
-var attrs = ['width', 'font-size', 'font-family', 'font-weight', 'line-height', 'padding'];
+var attrs = ['width', 'font-size', 'font-family', 'font-weight', 'line-height', 'padding-top', 'padding-bottom'];
 
 /**
  * Boilerplate text
