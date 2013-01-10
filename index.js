@@ -51,7 +51,7 @@ function Grow(el, options) {
     this.$shadow.css(attrs[i], this.$el.css(attrs[i]));
   }
 
-  event.bind(el, 'keyup', this.update.bind(this));
+  event.bind(el, 'input', this.update.bind(this));
   document.body.appendChild(this.shadow);
 
   this.update();
