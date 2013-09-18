@@ -12,6 +12,6 @@ clean:
 	rm -fr build components template.js
 
 test: build
-	open test.html
+	open test/test.html
 
 .PHONY: clean test
