@@ -36,7 +36,7 @@ function Grow(el, options) {
   this.options = options || {};
   this.el = el;
   this.$el = $(el);
-  this.shadow = domify(require('./template'))[0];
+  this.shadow = domify(require('./template'));
   this.$shadow = $(this.shadow);
 
   // remove resize
