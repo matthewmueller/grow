@@ -1,1 +1,0 @@
-module.exports = '<div class="grow-component"></div>\n';

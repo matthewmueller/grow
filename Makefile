@@ -1,17 +1,11 @@
 
-build: components index.js grow.css template.js
-	@component build --dev
+example: node_modules
+	@./node_modules/.bin/duo-serve example/grow.js
 
-template.js: template.html
-	@component convert $<
-
-components: component.json
-	@component install --dev
+node_modules:
+	@npm install duo-serve
 
 clean:
 	rm -fr build components template.js
 
-test: build
-	open test/test.html
-
-.PHONY: clean test
+.PHONY: example clean test

@@ -1,7 +1,9 @@
 
 # grow
 
-  Grow textareas. Will work with any input, including long lines that don't have spaces.
+  Grow textareas without using a clone or ghost element.
+
+  Based off of: https://github.com/javierjulio/textarea-autosize.
 
 ## Example
 
@@ -10,20 +12,20 @@
 ```
 
 ```js
-grow(content)
+grow(content);
+```
+
+```css
+#content {
+  box-sizing: border-box;
+  max-height: 94px; /* optional */
+  min-height: 31px;
+}
 ```
 
 ## Installation
 
     $ component install matthewmueller/grow
-
-## Implementation
-
-This technique copies the textarea value to a "shadow" div to compute the proper height then updates the textarea.
-
-Loosely based off of https://github.com/jaz303/jquery-grab-bag/blob/master/javascripts/jquery.autogrow-textarea.js
-
-> Note: Use `component/grow` if you only need your textarea to grow from newlines.
 
 ## API
 
@@ -31,11 +33,11 @@ Loosely based off of https://github.com/jaz303/jquery-grab-bag/blob/master/javas
 
 Initializes a growing textarea. Options include
 
-* `buffer`: sets the amount of buffer space added to the end. Defaults to 20px.
+## Run Example
 
-## TODO
-
-* remove jquery dependency (needs a component that gets the computed style)
+```
+make
+```
 
 ## License
 

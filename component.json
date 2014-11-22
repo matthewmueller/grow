@@ -5,9 +5,8 @@
   "version": "0.0.3",
   "keywords": ["textarea", "grow", "auto", "resize"],
   "dependencies": {
-    "component/domify" : "*",
-    "component/event" : "*",
-    "component/jquery" : "*"
+    "ianstormtaylor/css": "0.3.x",
+    "component/event": "0.x"
   },
   "development": {},
   "license": "MIT",

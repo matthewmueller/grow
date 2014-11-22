@@ -2,21 +2,8 @@
  * Module dependencies
  */
 
-var $ = require('jquery'),
-    event = require('event'),
-    domify = require('domify');
-
-/**
- * Attributes that affect height
- */
-
-var attrs = ['width', 'font-size', 'font-family', 'font-weight', 'line-height', 'padding-top', 'padding-bottom'];
-
-/**
- * Boilerplate text
- */
-
-var boilerplate = 'Some boilerplate text';
+var event = require('event');
+var css = require('css');
 
 /**
  * Export `Grow`
@@ -33,80 +20,42 @@ module.exports = Grow;
 
 function Grow(el, options) {
   if(!(this instanceof Grow)) return new Grow(el, options);
-  this.options = options || {};
   this.el = el;
-  this.$el = $(el);
-  this.shadow = domify(require('./template'));
-  this.$shadow = $(this.shadow);
 
-  // remove resize
-  this.$el.css('resize', 'none');
+  var height = el.offsetHeight;
+  var scrollHeight = el.scrollHeight;
+  var diff = parseInt(css(el, 'padding-bottom')) + parseInt(css(el, 'padding-top'));
 
-  // initial attributes
-  this.height = this.$el.outerHeight();
-  this.buffer = this.options.buffer || 20;
+  // Firefox: scrollHeight isn't full height on border-box
+  if (scrollHeight + diff <= height) diff = 0;
 
-  // copy attributes
-  for (var i = 0, len = attrs.length; i < len; i++) {
-    this.$shadow.css(attrs[i], this.$el.css(attrs[i]));
-  }
+  // check if the element already has text
+  hasText(el.value) && css(el, { height: scrollHeight });
 
-  event.bind(el, 'input', this.update.bind(this));
-  document.body.appendChild(this.shadow);
+  this.oninput = event.bind(el, 'input', update);
+  this.onkeyup = event.bind(el, 'keyup', update);
 
-  this.update();
+  function update(e) {
+    css(el, { height: 'auto' });
+    css(el, { height: el.scrollHeight - diff });
+  };
 }
 
 /**
- * Update
- *
- * @return {Grow}
- * @api private
+ * unbind
  */
 
-Grow.prototype.update = function() {
-  var val = entities(this.el.value),
-      $shadow = this.$shadow,
-      $el = this.$el;
-
-  // Copy text over
-  if(val) this.shadow.innerHTML = val;
-  else this.shadow.innerHTML = boilerplate;
-
-  var height = Math.max($shadow.outerHeight() + this.buffer, this.height);
-  $el.height(height);
-
+Grow.prototype.unbind = function() {
+  event.unbind(this.el, 'input', this.oninput);
+  event.unbind(this.el, 'keyup', this.oninput);
   return this;
 };
 
-/**
- * Convert string to proper entities
- *
- * @param {String} str
- * @return {String}
- * @api private
- */
-
-function entities(str) {
-  return str
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/&/g, '&amp;')
-    .replace(/\n$/, '<br/>&nbsp;')
-    .replace(/\n/g, '<br/>')
-    .replace(/ {2,}/g, function(s){ return repeat('&nbsp;', s.length - 1) + ' '; });
-}
 
 /**
- * Replace a `str` `n` number of times
- *
- * @param {String} str
- * @param {Number} n
- * @api private
+ * Has Text
  */
 
-function repeat(str, n) {
-  var out = [];
-  for (var i = 0; i < n; i++) out[out.length] = str;
-  return out.join('');
+function hasText(str) {
+  return str.replace(/\s/g, '').length > 0;
 }
