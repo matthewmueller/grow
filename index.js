@@ -24,7 +24,9 @@ function Grow(el, options) {
 
   var height = el.offsetHeight;
   var scrollHeight = el.scrollHeight;
-  var diff = parseInt(css(el, 'padding-bottom')) + parseInt(css(el, 'padding-top'));
+  var paddingBottom = parseInt(css(el, 'padding-bottom'));
+  var paddingTop = parseInt(css(el, 'padding-top'));
+  var diff = paddingBottom + paddingTop;
 
   // Firefox: scrollHeight isn't full height on border-box
   if (scrollHeight + diff <= height) diff = 0;
@@ -37,7 +39,7 @@ function Grow(el, options) {
 
   function update(e) {
     css(el, { height: 'auto' });
-    css(el, { height: el.scrollHeight - diff });
+    css(el, { height: el.scrollHeight - paddingBottom });
   };
 }
 
