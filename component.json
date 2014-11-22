@@ -2,8 +2,13 @@
   "name": "grow",
   "repo": "matthewmueller/grow",
   "description": "grow textareas",
-  "version": "0.0.3",
-  "keywords": ["textarea", "grow", "auto", "resize"],
+  "version": "0.1.0",
+  "keywords": [
+    "textarea",
+    "grow",
+    "auto",
+    "resize"
+  ],
   "dependencies": {
     "ianstormtaylor/css": "0.3.x",
     "component/event": "0.x"
