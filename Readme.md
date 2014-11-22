@@ -29,9 +29,9 @@ grow(content);
 
 ## API
 
-### `grow(el, options)`
+### `grow(el)`
 
-Initializes a growing textarea. Options include
+Initializes a growing textarea
 
 ## Run Example
 
