@@ -4,6 +4,7 @@
 
 var event = require('event');
 var css = require('css');
+var body = document.body;
 
 /**
  * Export `Grow`
@@ -32,14 +33,16 @@ function Grow(el, options) {
   if (scrollHeight + diff <= height) diff = 0;
 
   // check if the element already has text
-  hasText(el.value) && css(el, { height: scrollHeight });
+  hasText(el.value) && css(el, { height: scrollHeight - diff });
 
   this.oninput = event.bind(el, 'input', update);
   this.onkeyup = event.bind(el, 'keyup', update);
 
   function update(e) {
-    css(el, { height: 'auto' });
-    css(el, { height: el.scrollHeight - paddingBottom });
+    var top = body.scrollTop;
+    css(el, { height: 0 });
+    css(el, { height: el.scrollHeight });
+    body.scrollTop = top;
   };
 }
 
