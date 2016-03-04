@@ -1,0 +1,36 @@
+{
+  "name": "grow-textarea",
+  "version": "0.1.2",
+  "description": "grow textareas",
+  "main": "index.js",
+  "directories": {
+    "example": "example"
+  },
+  "scripts": {
+    "test": "make test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matthewmueller/grow.git"
+  },
+  "keywords": [
+    "textarea",
+    "grow",
+    "auto",
+    "resize"
+  ],
+  "author": "Matthew Mueller",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/matthewmueller/grow/issues"
+  },
+  "homepage": "https://github.com/matthewmueller/grow#readme",
+  "dependencies": {
+    "component-event": "^0.1.4",
+    "ianstormtaylor-css": "^0.3.1"
+  },
+  "browser": {
+    "event": "component-event",
+    "css": "ianstormtaylor-css"
+  }
+}
