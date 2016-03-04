@@ -2,7 +2,6 @@
  * Module dependencies
  */
 
-var event = require('event');
 var css = require('css');
 var body = document.body;
 
@@ -35,30 +34,12 @@ function Grow(el, options) {
   // check if the element already has text
   hasText(el.value) && css(el, { height: scrollHeight - diff });
 
-  this.oninput = event.bind(el, 'input', update);
-  this.onkeyup = event.bind(el, 'keyup', update);
-
   // update
-
-
-  function update(e) {
-    var top = body.scrollTop;
-    css(el, { height: 0 });
-    css(el, { height: el.scrollHeight });
-    body.scrollTop = top;
-  };
+  var top = body.scrollTop;
+  css(el, { height: 0 });
+  css(el, { height: el.scrollHeight });
+  body.scrollTop = top;
 }
-
-/**
- * unbind
- */
-
-Grow.prototype.unbind = function() {
-  event.unbind(this.el, 'input', this.oninput);
-  event.unbind(this.el, 'keyup', this.oninput);
-  return this;
-};
-
 
 /**
  * Has Text
