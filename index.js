@@ -38,6 +38,9 @@ function Grow(el, options) {
   this.oninput = event.bind(el, 'input', update);
   this.onkeyup = event.bind(el, 'keyup', update);
 
+  // update
+
+
   function update(e) {
     var top = body.scrollTop;
     css(el, { height: 0 });
