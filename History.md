@@ -1,4 +1,10 @@
 
+1.0.0 / 2016-03-04
+==================
+
+  * declarative grow component
+  * add the package.json
+
 0.1.2 / 2015-01-05
 ==================
 
