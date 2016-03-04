@@ -1,6 +1,6 @@
 {
   "name": "grow-textarea",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "grow textareas",
   "main": "index.js",
   "directories": {
