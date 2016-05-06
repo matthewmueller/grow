@@ -26,18 +26,19 @@ function Grow(el, options) {
   var scrollHeight = el.scrollHeight;
   var paddingBottom = parseInt(css(el, 'padding-bottom'));
   var paddingTop = parseInt(css(el, 'padding-top'));
-  var diff = paddingBottom + paddingTop;
+  var diff = paddingBottom + paddingTop;  options = options || {};
+  var extra = options.extra || 0;
 
   // Firefox: scrollHeight isn't full height on border-box
   if (scrollHeight + diff <= height) diff = 0;
 
   // check if the element already has text
-  hasText(el.value) && css(el, { height: scrollHeight - diff });
+  hasText(el.value) && css(el, { height: scrollHeight - diff + extra });
 
   // update
   var top = body.scrollTop;
   css(el, { height: 0 });
-  css(el, { height: el.scrollHeight });
+  css(el, { height: el.scrollHeight + extra });
   body.scrollTop = top;
 }
 
